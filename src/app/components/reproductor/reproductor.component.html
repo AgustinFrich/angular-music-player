@@ -1,0 +1,13 @@
+<div *ngFor="let a of audios">
+  <h1>{{ a.nombre }}</h1>
+  <button (click)="playSong(a)">
+    {{ sound?.playing() && playing === a.nombre ? "Pause" : "Play" }}
+  </button>
+
+  <!--
+    <audio controls src="{{ a.link }}" type="audio/mp3">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+--></div>
+
+<progress value="{{ sound?.pos() }}" max="100"></progress>

@@ -100,6 +100,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "frich-music:build:production",
+            "firebaseProject": "frich-music",
+            "firebaseHostingSite": "frich-music"
+          }
         }
       }
     }

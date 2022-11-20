@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "frich-music": {
+      "hosting": {
+        "frich-music": [
+          "frich-music"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "frich-music"
+  }
+}
