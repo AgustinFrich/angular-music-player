@@ -1,4 +1,4 @@
-import { Howl, Howler } from 'howler';
+import { Howl, Howler, SpatialPosition } from 'howler';
 
 import { AudioService } from './../../services/audio.service';
 import { Audio } from './../../classes/audio';
@@ -11,33 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReproductorComponent implements OnInit {
   audios: Audio[] = [];
-  sound?: Howl;
-  playing: string = '';
-  songTime = 0;
-  constructor(private audioService: AudioService) {}
+
+  constructor(public audioService: AudioService) {}
 
   playSong(audio: Audio) {
-    if (this.sound?.playing()) {
-      this.pauseSong();
+    if (this.audioService.playing !== audio.nombre) {
+      this.audioService.sound?.stop();
+      this.audioService.sound = new Howl({ src: [audio.link], html5: true });
+      this.audioService.sound?.play();
+      this.audioService.playing = audio.nombre;
     } else {
-      if (this.playing !== audio.nombre) {
-        this.sound?.stop();
-        this.sound = new Howl({ src: [audio.link], html5: true });
+      if (this.audioService.sound?.playing()) {
+        this.pauseSong();
+      } else {
+        this.audioService.sound?.play();
+        this.audioService.playing = audio.nombre;
       }
-      this.sound?.play();
-      this.playing = audio.nombre;
-      setTimeout(() => {
-        console.log(this.sound?.pos());
-      }, 2000);
     }
   }
 
   pauseSong() {
-    this.sound?.pause();
+    this.audioService.sound?.pause();
   }
 
   resumeSong() {
-    this.sound?.pause();
+    this.audioService.sound?.pause();
   }
 
   ngOnInit(): void {
