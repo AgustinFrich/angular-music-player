@@ -1,4 +1,73 @@
-<progress
-  value="{{ audioService.songTime }}"
-  max="{{ audioService.sound?.duration() }}"
-></progress>
+<div class="d-flex justify-content-center mb-3 mt-3">
+  <small class="me-2">{{ audioService.songTime | tiempoPipe }}</small>
+  <input
+    class="w-50"
+    (change)="cambiarMomento($event)"
+    (drag)="audioService.pause()"
+    (focus)="audioService.pause()"
+    (click)="audioService.pause()"
+    (input)="audioService.pause()"
+    type="range"
+    min="0"
+    max="{{ audioService.sound?.duration() }}"
+    value="{{ audioService.songTime }}"
+    style="margin: 0"
+  />
+  <!--
+    <progress
+    class="w-50"
+    value="{{ audioService.songTime }}"
+    max="{{ audioService.sound?.duration() }}"
+    ></progress>
+  -->
+  <small class="ms-2">{{ audioService.duracion() | tiempoPipe }}</small>
+</div>
+<div class="d-flex justify-content-center mb-3">
+  <button
+    class="extraBtn me-2"
+    (click)="audioService.random = !audioService.random"
+  >
+    <img
+      [src]="
+        audioService.random
+          ? '../../../assets/randT.png'
+          : '../../../assets/randF.png'
+      "
+      class="extraImg"
+    />
+  </button>
+  <button class="playBtn me-1" (click)="audioService.prev()">
+    <img src="../../../assets/prev.png" class="playImg" />
+  </button>
+  <button (click)="playPause()" class="playBtn">
+    <img
+      class="playImg"
+      [src]="
+        audioService.sound?.playing()
+          ? '../../../assets/pause.png'
+          : '../../../assets/play.png'
+      "
+      alt=""
+    />
+  </button>
+  <button class="playBtn ms-1" (click)="audioService.next()">
+    <img src="../../../assets/next.png" class="playImg" />
+  </button>
+  <button
+    class="extraBtn ms-2"
+    (click)="audioService.repetir = !audioService.repetir"
+  >
+    <img
+      [src]="
+        audioService.repetir
+          ? '../../../assets/repT.png'
+          : '../../../assets/repF.png'
+      "
+      class="extraImg"
+    />
+  </button>
+</div>
+<!--
+
+  <div style="height: 30px"></div>
+-->

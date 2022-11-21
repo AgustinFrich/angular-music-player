@@ -1,0 +1,32 @@
+.playBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #a00;
+  transform: translateY(5px);
+}
+
+.playImg {
+  width: 30px;
+  height: 30px;
+  transform: translateX(-3px);
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #a00;
+}
+
+.linea {
+  height: 50px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.linea:hover {
+  background-color: #333333;
+}
+
+h4 {
+  transform: translateY(10px);
+  letter-spacing: 2px;
+  margin: 0;
+}

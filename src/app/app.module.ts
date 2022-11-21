@@ -12,11 +12,19 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { BaraInferiorComponent } from './components/bara-inferior/bara-inferior.component';
+import { TiempoPipePipe } from './pipes/tiempo-pipe.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ReproductorComponent, BaraInferiorComponent],
+  declarations: [
+    AppComponent,
+    ReproductorComponent,
+    BaraInferiorComponent,
+    TiempoPipePipe,
+  ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

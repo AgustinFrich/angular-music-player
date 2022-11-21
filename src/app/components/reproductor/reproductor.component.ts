@@ -15,19 +15,7 @@ export class ReproductorComponent implements OnInit {
   constructor(public audioService: AudioService) {}
 
   playSong(audio: Audio) {
-    if (this.audioService.playing !== audio.nombre) {
-      this.audioService.sound?.stop();
-      this.audioService.sound = new Howl({ src: [audio.link], html5: true });
-      this.audioService.sound?.play();
-      this.audioService.playing = audio.nombre;
-    } else {
-      if (this.audioService.sound?.playing()) {
-        this.pauseSong();
-      } else {
-        this.audioService.sound?.play();
-        this.audioService.playing = audio.nombre;
-      }
-    }
+    this.audioService.playSong(audio);
   }
 
   pauseSong() {
