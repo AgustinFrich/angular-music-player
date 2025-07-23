@@ -2,4 +2,10 @@
   position: sticky;
   bottom: 0px;
   background-color: #111111;
+  height: 125px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: 70px auto 125px;
 }

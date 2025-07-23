@@ -1,3 +1,4 @@
+<div class="ms-2" *ngIf="audios.length === 0">Cargando...</div>
 <div *ngFor="let a of audios">
   <div class="d-flex linea ps-3" (click)="playSong(a)">
     <button (click)="playSong(a)" class="me-2 playBtn">
