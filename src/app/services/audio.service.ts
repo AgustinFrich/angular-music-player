@@ -1,9 +1,27 @@
 import { Injectable } from '@angular/core';
-import { collectionData, Firestore, getDocs } from '@angular/fire/firestore';
+import {
+  addDoc,
+  collectionData,
+  doc,
+  Firestore,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+} from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Howl } from 'howler';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { Audio } from '../classes/audio';
+import {
+  getDownloadURL,
+  ref,
+  Storage,
+  StringFormat,
+  uploadBytes,
+  uploadString,
+} from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -19,14 +37,15 @@ export class AudioService {
   random = false;
   repetir = false;
 
-  constructor(private fs: Firestore) {
+  constructor(private fs: Firestore, private storage: Storage) {
     setInterval(() => {
       this.songTime = this.sound?.seek() || 0;
     }, 500);
   }
 
   getImagenes() {
-    return collectionData(this.audiosC) as Observable<Audio[]>;
+    const q = query(this.audiosC, orderBy('nombre', 'asc'));
+    return collectionData(q) as Observable<Audio[]>;
   }
 
   async getAudiosEstaticos() {
@@ -138,4 +157,28 @@ export class AudioService {
       this.playSong(this.audios[aleatorio]);
     }
   }
+
+  //CRUD
+  async subir(nombre: string, mp3?: Blob) {
+    const d = doc(this.audiosC);
+    let audio = new Audio(nombre);
+    audio.id = d.id;
+
+    if (mp3 !== undefined) {
+      const storageRef = ref(this.storage, 'audios/' + nombre + '.mp3');
+
+      await uploadBytes(storageRef, mp3);
+
+      const url = await getDownloadURL(storageRef);
+      audio.link = url;
+      setDoc(d, { ...audio });
+    }
+  }
 }
+/*
+await uploadString(storageRef, evt.target!.result as string);
+
+const imageUrl = await getDownloadURL(storageRef);
+audio.link = imageUrl;
+setDoc(d, { ...audio });
+*/

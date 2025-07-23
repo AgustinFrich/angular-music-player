@@ -1,0 +1,47 @@
+<div class="d-block w-75">
+  <div class="d-flex name-container">
+    <div class="col-2">
+      <h4 class="me-2 text-end">Nombre:</h4>
+    </div>
+    <div class="col-10 d-flex">
+      <input
+        type="text"
+        class="name w-75"
+        [(ngModel)]="nombre"
+        value="{{ nombre }}"
+      />
+      <div class="ms-2 checkBtn" [hidden]="nombre.length < 3">
+        <img class="checkImg" src="../../../assets/check.png" alt="" />
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="d-flex archivo-container">
+    <div class="col-2">
+      <h4 class="me-2 text-end">Audio:</h4>
+    </div>
+    <div class="col-10 d-flex">
+      <input
+        type="file"
+        class="archivo"
+        id="archivo"
+        accept="audio/mp3"
+        (change)="cambio($event)"
+        value="{{ mp3 }}"
+      />
+
+      <label for="archivo">{{
+        mp3 === undefined
+          ? "Seleccione un archivo"
+          : "¿Seleccionar otro archivo?"
+      }}</label>
+      <div class="ms-2 checkBtn" [hidden]="mp3 === undefined">
+        <img class="checkImg" src="../../../assets/check.png" alt="" />
+      </div>
+    </div>
+  </div>
+  <div style="height: 200px"></div>
+  <div class="d-flex justify-content-center">
+    <button class="subir" (click)="subir()">Subir nueva canción</button>
+  </div>
+</div>

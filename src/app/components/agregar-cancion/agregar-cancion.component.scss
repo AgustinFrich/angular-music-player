@@ -1,0 +1,79 @@
+.name-container {
+  height: 50px;
+  align-items: center;
+}
+
+.name {
+  background-color: #00000000;
+  color: #fff;
+  font-weight: 500;
+  height: 50px;
+  border: 0;
+  border-bottom: #a00 solid 2px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.name:focus {
+  outline: none;
+}
+
+.archivo-container {
+  height: 50px;
+  align-items: center;
+}
+
+.archivo {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.archivo + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+  border-bottom: #a00 solid 2px;
+  padding: 5px 10px;
+}
+
+.archivo:focus + label,
+.archivo + label:hover {
+  background-color: #a00;
+}
+
+.checkBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #a00;
+}
+
+.checkImg {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  transform: translate(5px, 5px);
+  border-radius: 50%;
+  background-color: #a00;
+}
+
+.subir {
+  background-color: #000;
+  color: #fff;
+  font-weight: 500;
+  height: 50px;
+  width: 300px;
+  border: #333 solid 2px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.subir:hover {
+  background-color: #333;
+  border: #aa0000 solid 2px;
+}

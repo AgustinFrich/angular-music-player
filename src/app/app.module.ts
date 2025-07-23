@@ -14,6 +14,8 @@ import { ReproductorComponent } from './components/reproductor/reproductor.compo
 import { BaraInferiorComponent } from './components/bara-inferior/bara-inferior.component';
 import { TiempoPipePipe } from './pipes/tiempo-pipe.pipe';
 import { FormsModule } from '@angular/forms';
+import { AgregarCancionComponent } from './components/agregar-cancion/agregar-cancion.component';
+import { NavegacionComponent } from './components/navegacion/navegacion.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { FormsModule } from '@angular/forms';
     ReproductorComponent,
     BaraInferiorComponent,
     TiempoPipePipe,
+    AgregarCancionComponent,
+    NavegacionComponent,
   ],
   imports: [
     BrowserModule,

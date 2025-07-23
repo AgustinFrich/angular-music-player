@@ -1,0 +1,18 @@
+.columna {
+  flex-direction: column;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  font-weight: 500;
+  height: 50px;
+  border: #333 solid 2px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+button:hover {
+  background-color: #333;
+  border: #aa0000 solid 2px;
+}

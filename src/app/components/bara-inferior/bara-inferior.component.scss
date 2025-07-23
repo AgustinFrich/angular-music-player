@@ -1,3 +1,11 @@
+// VOLUMEN
+.volumen {
+  position: relative !important;
+  float: right !important;
+  width: 200px !important;
+  margin: 0 0 0 30px !important;
+}
+
 .btn {
   border-radius: 50% !important;
 }
@@ -42,14 +50,12 @@ input[type="range"] {
   outline: none;
   margin: 0;
   background-color: #111111;
-}
-
-input[type="range"] {
   height: 33px;
   -webkit-appearance: none;
   margin: 10px 0;
   width: 100%;
 }
+
 input[type="range"]:focus {
   outline: none;
 }

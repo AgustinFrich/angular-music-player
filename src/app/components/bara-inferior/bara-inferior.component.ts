@@ -35,4 +35,8 @@ export class BaraInferiorComponent implements OnInit {
     this.audioService.sound?.seek($event.target.value);
     this.audioService.play();
   }
+
+  cambiarVolumen($event: any) {
+    this.audioService.sound?.volume($event.target.value);
+  }
 }
